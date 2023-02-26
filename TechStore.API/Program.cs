@@ -9,6 +9,8 @@ using TechStore.Web.Services;
 using System.IO.Abstractions;
 using TechStore.Web.Extensions;
 using FluentValidation;
+using TechStore.Domain.Interfaces;
+using TechStore.Domain.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +24,7 @@ builder.Services.AddDbContext<DbShopContext>(db =>
         b => b.MigrationsAssembly("TechStore.API")));
 
 // Inject Repos
-builder.Services.AddTransient<ProductImageRepository>();
+builder.Services.AddTransient<IDataRepository<ImageEntityDTO>, ProductImageRepository>();
 
 builder.Services.AddSingleton<IFileSystem, FileSystem>();
 
@@ -42,7 +44,7 @@ builder.Services
     .ValidateFluently()
     .ValidateOnStart();
 
-builder.Services.AddScoped<ImageService>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

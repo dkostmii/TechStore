@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TechStore.DAL.Repos;
+using TechStore.Domain.Interfaces;
 using TechStore.Domain.Models;
 using TechStore.Web.Services;
 
@@ -9,10 +10,10 @@ namespace TechStore.Web.Controllers;
 [Route("[controller]")]
 public class ProductImageController : ControllerBase
 {
-    private readonly ProductImageRepository _repo;
-    private readonly ImageService _service;
+    private readonly IDataRepository<ImageEntityDTO> _repo;
+    private readonly IImageService _service;
 
-    public ProductImageController(ProductImageRepository repo, ImageService service)
+    public ProductImageController(IDataRepository<ImageEntityDTO> repo, IImageService service)
     {
         _repo = repo;
         _service = service;
