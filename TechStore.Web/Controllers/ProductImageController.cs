@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TechStore.DAL.Repos;
 using TechStore.Domain.Interfaces;
 using TechStore.Domain.Models;
 using TechStore.Web.Services;

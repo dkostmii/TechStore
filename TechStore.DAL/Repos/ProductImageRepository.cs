@@ -2,7 +2,6 @@
 using TechStore.Domain.Models;
 using TechStore.DAL.Models;
 using AutoMapper;
-using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace TechStore.DAL.Repos;
